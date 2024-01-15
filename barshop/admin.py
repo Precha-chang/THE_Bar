@@ -39,13 +39,12 @@ class orderAdmin(admin.ModelAdmin):
         'order_code',
         'status',
     ]
+    
 @admin.register(models.OrderItem)
 class OrderItem(admin.ModelAdmin):
     list_display = [
-        'oder',        
-        'product',
-        'unit',
     ]
+    
 @admin.register(models.Reserve)
 class CReserveAdmin(admin.ModelAdmin):
     list_display = [

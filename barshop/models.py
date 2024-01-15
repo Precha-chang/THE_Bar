@@ -61,9 +61,12 @@ class OrderItem(models.Model):
     def __str__(self):
         return self.product.name
     
+class Table (models.Model):
+    table_id = models.CharField(max_length=3)
+    
 class Reserve(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    table_id = models.CharField(max_length=3)
+    table_id = models.ForeignKey(Table, on_delete=models.CASCADE)
     phone =  models.CharField (max_length=10)
     status = models.CharField(max_length=32, choices=(
         ("Wait", "Wait"),
@@ -73,6 +76,8 @@ class Reserve(models.Model):
     
     def __str__(self):
         return self.user.username
+
+
     
     
 

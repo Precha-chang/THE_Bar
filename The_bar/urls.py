@@ -24,7 +24,12 @@ urlpatterns = [
     path('',views.homepage, name ="home"),
     path('about',views.about, name ="about"),
     path('shop',views.shop, name ="shop"),
-    path("cart",views.cart, name="cart")
+    path("cart",views.cart, name="cart"),
+    
+    path("login",views.login, name="login"),
+    path("regis",views.regis, name="regis"),
+
+    path('add-cart/<int:id>', views.addCart, name='add-cart')
     
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
