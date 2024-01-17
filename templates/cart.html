@@ -3,7 +3,7 @@
 <!-- Basic -->
 {%load static %}
 <head>
-    <" %}meta charset="utf-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <!-- Mobile Metas -->
@@ -53,9 +53,9 @@
                     </div>
                     <div class="our-link">
                         <ul>
-                            <li><a href="#"><i class="fa fa-user s_color"></i> My Account</a></li>
-                            <li><a href="#"><i class="fas fa-location-arrow"></i> Our location</a></li>
-                            <li><a href="#"><i class="fas fa-headset"></i> Contact Us</a></li>
+                            <li><a href="#"><i class="fas fa-location-arrow"></i> My ProJect</a></li>
+                            <li><a href="#"><i class="fas fa-headset"></i> Jk-CHA_ng</a></li>
+                            <li><a href="#"><i class="fa fa-user s_color"></i> My {{user.username}}</a></li>
                         </ul>
                     </div>
                 </div>
@@ -121,7 +121,7 @@
                     <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                         <li class="nav-item"><a class="nav-link" href={% url "home" %}>Home</a></li>
                         <li class="nav-item"><a class="nav-link" href={% url "about" %}>About Us</a></li>
-                        <li class="dropdown active">
+                        <li class="dropdown">
                             <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
                             <ul class="dropdown-menu">
 								<li><a href={% url "shop" %}>Sidebar Shop</a></li>
@@ -147,7 +147,7 @@
 
                 <!-- Start Atribute Navigation -->
                 <div class="attr-nav">
-                    <ul>
+                    <ul >
                         <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
                         <li class="side-menu"><a href={% url 'cart' %}>
 						<i class="fa fa-shopping-bag"></i>
