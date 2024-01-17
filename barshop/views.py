@@ -23,7 +23,7 @@ def homepage (request):
         "beer":product_beer,
         "spirits":product_spirits,
         "snacks":product_snacks,
-        "snacks":product_mixer,
+        "mixer":product_mixer,
     })
 
 
@@ -213,10 +213,6 @@ def Order (request, id):
             
         )
         models.CartItem.objects.filter(cart=cart,product=product).delete()
-    
-    
-    
-    
     
     return redirect('cart')
     

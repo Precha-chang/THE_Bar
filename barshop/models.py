@@ -69,6 +69,9 @@ class Table (models.Model):
         ("Process", "Process"))
     )
     
+    def __str__(self):
+        return self.table_id
+    
 class Reserve(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     table_id = models.ForeignKey(Table, on_delete=models.CASCADE)
@@ -76,6 +79,8 @@ class Reserve(models.Model):
     
     def __str__(self):
         return self.user.username
+    
+    
     
     # class Customer (models.Model):
     # user = models.ForeignKey(User, on_delete=models.CASCADE)

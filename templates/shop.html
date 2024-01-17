@@ -61,12 +61,12 @@
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-					<div class="login-box">
+					{% comment %} <div class="login-box">
 						<select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
 							<option>Register Here</option>
 							<option>Sign In</option>
 						</select>
-					</div>
+					</div> {% endcomment %}
                     <div class="text-slid-box">
                         <div id="offer-box" class="carouselTicker">
                             <ul class="offer-box">
@@ -113,7 +113,7 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                    <a class="navbar-brand" href="index.html"><img src="{% static "images/logo.png" %}" class="logo" alt=""></a>
+                    <a class="navbar-brand" href="index.html"><img src="{% static "images/logo96.png" %}" class="logo" alt=""></a>
                 </div>
                 <!-- End Header Navigation -->
 
@@ -126,11 +126,11 @@
                             <a href={% url "shop" %} class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
                             <ul class="dropdown-menu">
 								<li><a href={% url "shop" %}>Sidebar Shop</a></li>
-								<li><a href="shop-detail.html">Shop Detail</a></li>
+								{% comment %} <li><a href="shop-detail.html">Shop Detail</a></li> {% endcomment %}
                                 <li><a href={% url "cart" %}>Cart</a></li>
-                                <li><a href="checkout.html">Checkout</a></li>
+                                {% comment %} <li><a href="checkout.html">Checkout</a></li>
                                 <li><a href="my-account.html">My Account</a></li>
-                                <li><a href="wishlist.html">Wishlist</a></li>
+                                <li><a href="wishlist.html">Wishlist</a></li> {% endcomment %}
                             </ul>
                         </li>
                         <li class="nav-item"><a class="nav-link" href={% url "reserve" %}>Reserve</a></li>
