@@ -53,9 +53,9 @@
                     </div>
                     <div class="our-link">
                         <ul>
-                            <li><a href="#"><i class="fa fa-user s_color"></i> My Account</a></li>
-                            <li><a href="#"><i class="fas fa-location-arrow"></i> Our location</a></li>
-                            <li><a href="#"><i class="fas fa-headset"></i> Contact Us</a></li>
+                            <li><a href="#"><i class="fas fa-location-arrow"></i> My ProJect</a></li>
+                            <li><a href="#"><i class="fas fa-headset"></i> Jk-CHA_ng</a></li>
+                            <li><a href="#"><i class="fa fa-user s_color"></i> My {{user.username}}</a></li>
                         </ul>
                     </div>
                 </div>
@@ -132,8 +132,15 @@
                                 <li><a href="wishlist.html">Wishlist</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-                        <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href={% url "reserve" %}>Reserve</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">User</a>
+                            <ul class="dropdown-menu">
+								<li><a href={% url 'login' %}>Login</a></li>
+								<li><a href={% url "regis" %}>Register</a></li>
+                                <li><a href={% url "Logout" %}>Logout</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -203,7 +210,7 @@
                 <div class="col-lg-12">
                     <h2>ABOUT US</h2>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href={% url "home" %}>Home</a></li>
                         <li class="breadcrumb-item active">ABOUT US</li>
                     </ul>
                 </div>
@@ -221,12 +228,11 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <h2 class="noo-sh-title-top">We are <span>Freshshop</span></h2>
-                    <p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
-                        voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
-                        sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-                        Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <h2 class="noo-sh-title-top">We are <span>THE BEST</span></h2>
+                     <p>ร้านเหล้า "THE BEST" เป็นร้านเหล้าที่ดำเนินกิจการมาอย่างยาวนานกว่า 10 ปี ในปัจจุบันมี 2 สาขา ได้แก่ สาขากรุงเทพมหานคร และสาขาระยอง  บรรยากาศของร้าน THE BEST ทั้งสองสาขา เน้นความทันสมัยและผ่อนคลาย เหมาะสำหรับการสังสรรค์กับเพื่อนฝูงหรือครอบครัว พนักงานบริการดี สุภาพและเป็นกันเอง  
+                        อาหารของร้าน THE BEST ทั้งสองสาขา รสชาติดี สดใหม่ ราคาไม่แพง เมนูแนะนำ ได้แก่ กุ้งแม่น้ำเผา ปลากะพงทอดน้ำปลา ต้มยำกุ้ง ยำสามรส ไก่ผัดเม็ดมะม่วงหิมพานต์ เครื่องดื่มของร้านก็มีให้เลือกหลากหลาย ทั้งเบียร์ เหล้า วอดก้า โซดา  ร้าน THE BEST ทั้งสองสาขา มีดนตรีสดให้ฟังทุกวัน ดนตรีที่เล่นมีหลากหลายแนว ทั้งเพลงไทย 
+                        เพลงสากล เพลงลูกทุ่ง เหมาะสำหรับการนั่งฟังเพลงชิลล์ๆ กับเพื่อนฝูง  ราคาอาหารและเครื่องดื่มของร้าน THE BEST ทั้งสองสาขา ถือว่าไม่แพง เมื่อเทียบกับคุณภาพของอาหารและบรรยากาศของร้าน</p>
+                    <p>ร้านเหล้า "THE BEST" เป็นร้านเหล้าที่เหมาะสำหรับการสังสรรค์กับเพื่อนฝูงหรือครอบครัว อาหารรสชาติดี บรรยากาศดี ดนตรีสดเพราะ ราคาไม่แพง</p>
 					<a class="btn hvr-hover" href="#">Read More</a>
                 </div>
             </div>
@@ -234,19 +240,19 @@
                 <div class="col-sm-6 col-lg-4">
                     <div class="service-block-inner">
                         <h3>We are Trusted</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                        <p>ร้านเหล้า "THE BEST" จึงได้รับความไว้วางใจจากลูกค้าเป็นจำนวนมาก กลายเป็นร้านเหล้ายอดนิยมที่ได้รับความนิยมจากทั้งคนไทยและชาวต่างชาติ </p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-4">
                     <div class="service-block-inner">
                         <h3>We are Professional</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                        <p>ร้านเหล้า "THE BEST" เป็นร้านเหล้ามืออาชีพ แบบไดนามิก เพราะมีองค์ความรู้และประสบการณ์ ยืดหยุ่น ทำงานได้อย่างมีประสิทธิภาพ อาหารรสชาติดี บรรยากาศดี ราคาไม่แพง และมีดนตรีสด </p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-4">
                     <div class="service-block-inner">
                         <h3>We are Expert</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                        <p>ร้านเหล้า "THE BEST" มีความเชี่ยวชาญและประสบการณ์ในธุรกิจร้านเหล้ามาอย่างยาวนานกว่า 10 ปี เข้าใจความต้องการของลูกค้าเป็นอย่างดี สามารถปรับตัวให้เข้ากับสถานการณ์ต่างๆ ได้ดี และให้บริการลูกค้าได้อย่างมีประสิทธิภาพ </p>
                     </div>
                 </div>
             </div>
@@ -536,12 +542,6 @@
     </footer>
     <!-- End Footer  -->
 
-    <!-- Start copyright  -->
-    <div class="footer-copyright">
-        <p class="footer-company">All Rights Reserved. &copy; 2018 <a href="#">ThewayShop</a> Design By :
-            <a href="https://html.design/">html design</a></p>
-    </div>
-    <!-- End copyright  -->
 
     <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
 

@@ -43,15 +43,23 @@ class orderAdmin(admin.ModelAdmin):
 @admin.register(models.OrderItem)
 class OrderItem(admin.ModelAdmin):
     list_display = [
+        'product',
+        'unit',
+        'order'
     ]
-    
+
+@admin.register(models.Table)
+class TableAdmin(admin.ModelAdmin):
+    list_display = [        
+        'table_id',
+        'status',
+    ]
+
 @admin.register(models.Reserve)
 class CReserveAdmin(admin.ModelAdmin):
     list_display = [
         'user',        
         'table_id',
-        'phone',
-        'status',
     ]
     
     

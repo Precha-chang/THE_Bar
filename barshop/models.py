@@ -50,7 +50,7 @@ class Order(models.Model):
     ))
     date = models.DateTimeField(auto_now_add=True)
     def __str__(self):
-        return self.user.username
+        return self.order_code
 
 
 class OrderItem(models.Model):
@@ -62,20 +62,30 @@ class OrderItem(models.Model):
         return self.product.name
     
 class Table (models.Model):
+    
     table_id = models.CharField(max_length=3)
+    status = models.CharField(max_length=32, choices=(
+        ("Wait", "Wait"),
+        ("Process", "Process"))
+    )
     
 class Reserve(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     table_id = models.ForeignKey(Table, on_delete=models.CASCADE)
-    phone =  models.CharField (max_length=10)
-    status = models.CharField(max_length=32, choices=(
-        ("Wait", "Wait"),
-        ("Process", "Process"),
-        ("Success", "Success")
-    ))
+
     
     def __str__(self):
         return self.user.username
+    
+    # class Customer (models.Model):
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # balance = models.DecimalField(max_digits=20, decimal_places=2)
+    # customer_code = models.CharField(max_length=10)
+
+
+    # def __str__(self):
+
+    #     return self.user.first_name+" "+self.user.last_name
 
 
     

@@ -132,8 +132,15 @@
                                 <li><a href="wishlist.html">Wishlist</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-                        <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href={% url "reserve" %}>Reserve</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">User</a>
+                            <ul class="dropdown-menu">
+								<li><a href={% url 'login' %}>Login</a></li>
+								<li><a href={% url "regis" %}>Register</a></li>
+                                <li><a href={% url "Logout" %}>Logout</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -218,6 +225,7 @@
                                     <th>Remove</th>
                                 </tr>
                             </thead>
+
                             <tbody>
                                 {% for item in cartitem %}
                                 <tr>
@@ -234,9 +242,14 @@
                                     <td class="price-pr">
                                         <p>${{item.product.price}}</p>
                                     </td>
-                                    <td class="quantity-box"><input type="number" size="4" value="{{ item.unit }}" min="0" step="1" class="c-input-text qty text"></td>
+                                    <td class="quantity-box">{{ item.unit  }}</td>
                                     <td class="total-pr">
-                                        <p>$ {{ item.unit  }} * {{item.product.price }}</p>
+                                        <p>
+                                            <script>
+                                                
+                                                document.write("{{ item.product.price }}"*"{{item.unit}}")
+                                            </script>
+                                        </p>
                                     </td>
                                     <td class="remove-pr">
                                         <a href="#">
@@ -268,43 +281,36 @@
                     </div>
                 </div>
             </div>
-
+            <script>
+                let sum = 0;
+            </script>
             <div class="row my-5">
                 <div class="col-lg-8 col-sm-12"></div>
                 <div class="col-lg-4 col-sm-12">
                     <div class="order-box">
                         <h3>Order summary</h3>
+                        {% for item in cartitem %}
                         <div class="d-flex">
-                            <h4>Sub Total</h4>
-                            <div class="ml-auto font-weight-bold"> $ 130 </div>
+                            <h4>{{item.product.name}}</h4>
+                            <div class="ml-auto font-weight-bold"> $ 
+                                <script>               
+                                document.write("{{ item.product.price }}"*"{{item.unit}}")
+                                sum += "{{ item.product.price }}"*"{{item.unit}}"
+                                </script>
+                            </div>
                         </div>
-                        <div class="d-flex">
-                            <h4>Discount</h4>
-                            <div class="ml-auto font-weight-bold"> $ 40 </div>
-                        </div>
-                        <hr class="my-1">
-                        <div class="d-flex">
-                            <h4>Coupon Discount</h4>
-                            <div class="ml-auto font-weight-bold"> $ 10 </div>
-                        </div>
-                        <div class="d-flex">
-                            <h4>Tax</h4>
-                            <div class="ml-auto font-weight-bold"> $ 2 </div>
-                        </div>
-                        <div class="d-flex">
-                            <h4>Shipping Cost</h4>
-                            <div class="ml-auto font-weight-bold"> Free </div>
-                        </div>
+                        {% endfor %}
                         <hr>
                         <div class="d-flex gr-total">
                             <h5>Grand Total</h5>
-                            <div class="ml-auto h5"> $ 388 </div>
+                            <div class="ml-auto h5"> $ <script>
+                                document.write(sum)
+                            </script> </div>
                         </div>
                         <hr> </div>
                 </div>
-                <div class="col-12 d-flex shopping-box"><a href="checkout.html" class="ml-auto btn hvr-hover">Checkout</a> </div>
+                <div class="col-12 d-flex shopping-box"><a href="{% url 'Order' cart.id %}" class="ml-auto btn hvr-hover">Checkout</a> </div>
             </div>
-
         </div>
     </div>
     <!-- End Cart -->

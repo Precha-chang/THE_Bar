@@ -54,19 +54,20 @@
                     </div>
                     <div class="our-link">
                         <ul>
-                            <li><a href="#"><i class="fa fa-user s_color"></i> My Account</a></li>
-                            <li><a href="#"><i class="fas fa-location-arrow"></i> Our location</a></li>
-                            <li><a href="#"><i class="fas fa-headset"></i> Contact Us</a></li>
+                            <li><a href="#"><i class="fas fa-location-arrow"></i> My ProJect</a></li>
+                            <li><a href="#"><i class="fas fa-headset"></i> Jk-CHA_ng</a></li>
+                            <li><a href="#"><i class="fa fa-user s_color"></i> My {{user.username}}</a></li>
                         </ul>
                     </div>
                 </div>
+                
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-					<div class="login-box">
+					{% comment %} <div class="login-box">
 						<select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
 							<option>Register Here</option>
 							<option>Sign In</option>
 						</select>
-					</div>
+					</div> {% endcomment %}
                     <div class="text-slid-box">
                         <div id="offer-box" class="carouselTicker">
                             <ul class="offer-box">
@@ -113,7 +114,7 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                    <a class="navbar-brand" href="index.html"><img src="{% static "images/logo.png" %}" class="logo" alt=""></a>
+                    <a class="navbar-brand" href="index.html"><img src="{% static "images/logo99.png" %}" class="logo" alt=""></a>
                 </div>
                 <!-- End Header Navigation -->
 
@@ -126,15 +127,22 @@
                             <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
                             <ul class="dropdown-menu">
 								<li><a href={% url 'shop' %}>Sidebar Shop</a></li>
-								<li><a href="shop-detail.html">Shop Detail</a></li>
+								{% comment %} <li><a href="shop-detail.html">Shop Detail</a></li> {% endcomment %}
                                 <li><a href="{% url 'cart' %}">Cart</a></li>
-                                <li><a href="checkout.html">Checkout</a></li>
+                                {% comment %} <li><a href="checkout.html">Checkout</a></li>
                                 <li><a href="my-account.html">My Account</a></li>
-                                <li><a href="wishlist.html">Wishlist</a></li>
+                                <li><a href="wishlist.html">Wishlist</a></li> {% endcomment %}
                             </ul>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-                        <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href={% url "reserve" %}>Reserved</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">User</a>
+                            <ul class="dropdown-menu">
+								<li><a href={% url 'login' %}>Login</a></li>
+								<li><a href={% url "regis" %}>Register</a></li>
+                                <li><a href={% url "Logout" %}>Logout</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -278,12 +286,12 @@
 			<div class="row">
 				<div class="col-lg-6 col-md-6 col-sm-12">
 					<div class="offer-box-products">
-						<img class="img-fluid" src="{% static "images/add-img-01.jpg" %}" alt="" />
+						<img class="img-fluid" src="{% static "images/promotion01.png" %}" alt="" />
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-12">
 					<div class="offer-box-products">
-						<img class="img-fluid" src="{% static "images/add-img-02.jpg" %}" alt="" />
+						<img class="img-fluid" src="{% static "images/promotion02.png" %}" alt="" />
 					</div>
 				</div>
 			</div>
@@ -329,7 +337,7 @@
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                                 </ul>
-                                <a class="cart" href="#">Add to Cart</a>
+                                <a class="cart" href="{% url 'add-cart' item.id %}">Add to Cart</a>
                             </div>
                         </div>
                         <div class="why-text">
@@ -382,7 +390,7 @@
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                                 </ul>
-                                <a class="cart" href="#">Add to Cart</a>
+                                <a class="cart" href="{% url 'add-cart' item.id %}">Add to Cart</a>
                             </div>
                         </div>
                         <div class="why-text">
@@ -436,7 +444,7 @@
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                                 </ul>
-                                <a class="cart" href="#">Add to Cart</a>
+                                <a class="cart" href="{% url 'add-cart' item.id %}">Add to Cart</a>
                             </div>
                         </div>
                         <div class="why-text">
@@ -457,7 +465,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="title-all text-center">
-                        <h1>latest blog</h1>
+                        <h1>Drink Wisky </h1>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lacus enim.</p>
                     </div>
                 </div>
@@ -466,7 +474,7 @@
                 <div class="col-md-6 col-lg-4 col-xl-4">
                     <div class="blog-box">
                         <div class="blog-img">
-                            <img class="img-fluid" src="{% static "images/blog-img.jpg" %}" alt="" />
+                            <img class="img-fluid" src="{% static "images/x1.png" %}" alt="" />
                         </div>
                         <div class="blog-content">
                             <div class="title-blog">
@@ -484,7 +492,7 @@
                 <div class="col-md-6 col-lg-4 col-xl-4">
                     <div class="blog-box">
                         <div class="blog-img">
-                            <img class="img-fluid" src="{% static "images/blog-img-01.jpg" %}" alt="" />
+                            <img class="img-fluid" src="{% static "images/x2.png" %}" alt="" />
                         </div>
                         <div class="blog-content">
                             <div class="title-blog">
@@ -502,7 +510,7 @@
                 <div class="col-md-6 col-lg-4 col-xl-4">
                     <div class="blog-box">
                         <div class="blog-img">
-                            <img class="img-fluid" src="{% static "images/blog-img-02.jpg" %}" alt="" />
+                            <img class="img-fluid" src="{% static "images/x3.png" %}" alt="" />
                         </div>
                         <div class="blog-content">
                             <div class="title-blog">

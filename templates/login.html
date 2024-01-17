@@ -122,7 +122,7 @@
                     <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                         <li class="nav-item"><a class="nav-link" href={% url "home" %}>Home</a></li>
                         <li class="nav-item"><a class="nav-link" href={% url "about" %}>About Us</a></li>
-                        <li class="dropdown active">
+                        <li class="dropdown">
                             <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
                             <ul class="dropdown-menu">
 								<li><a href={% url "shop" %}>Sidebar Shop</a></li>
@@ -133,8 +133,15 @@
                                 <li><a href="wishlist.html">Wishlist</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-                        <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href={% url "reserve" %}>Reserve</a></li>
+                        <li class="dropdown active">
+                            <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">User</a>
+                            <ul class="dropdown-menu">
+								<li><a href={% url 'login' %}>Login</a></li>
+								<li><a href={% url "regis" %}>Register</a></li>
+                                <li><a href={% url "Logout" %}>Logout</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -222,14 +229,15 @@
                         <h3>Account Login</h3>
                     </div>
                     <h5><a data-toggle="collapse" href="#formLogin" role="button" aria-expanded="false">Click here to Login</a></h5>
-                    <form class="mt-3 collapse review-form-box" id="formLogin">
+                    <form class="user" action="{% url 'log_user' %}" method="post">
+                        {% csrf_token %}
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="InputEmail" class="mb-0">Email Address</label>
-                                <input type="email" class="form-control" id="InputEmail" placeholder="Enter Email"> </div>
+                                <label for="InputUser" class="mb-0">User</label>
+                                <input type="text" class="form-control" id="InputUser" placeholder="Enter User" name="username">  </div>
                             <div class="form-group col-md-6">
                                 <label for="InputPassword" class="mb-0">Password</label>
-                                <input type="password" class="form-control" id="InputPassword" placeholder="Password"> </div>
+                                <input type="password" class="form-control" id="InputPassword" placeholder="Password" name="password"> </div>
                         </div>
                         <button type="submit" class="btn hvr-hover">Login</button>
                     </form>
