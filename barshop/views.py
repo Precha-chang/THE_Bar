@@ -23,7 +23,7 @@ def homepage (request):
         "beer":product_beer,
         "spirits":product_spirits,
         "snacks":product_snacks,
-        "mixer":product_mixer,
+        "mixer":product_mixer
     })
 
 
@@ -72,6 +72,75 @@ def addCart(request, id):
     
 
     return redirect('shop')
+
+def addUnit(request, id):
+    user = User.objects.get(username=request.user.username)
+    
+    
+    product = models.Product.objects.get(id=id)
+    cart = models.Cart.objects.get(user=user)
+    
+    if (models.CartItem.objects.filter(cart=cart, product=product)).count() != 0:
+        
+        models.CartItem.objects.filter(cart=cart, product=product).update(unit=F("unit")+1)
+        
+    else :
+        models.CartItem.objects.create(
+            cart=cart,
+            product=product,
+            unit=1   
+        )
+    
+
+    return redirect('cart')
+
+
+
+def downUnit(request, id):
+    user = User.objects.get(username=request.user.username)
+    
+    
+    product = models.Product.objects.get(id=id)
+    cart = models.Cart.objects.get(user=user)
+    
+    if (models.CartItem.objects.filter(cart=cart, product=product)).count() >= 1:
+        
+        models.CartItem.objects.filter(cart=cart, product=product).update(unit=F("unit")+(-1))
+        
+    else :
+        models.CartItem.objects.filter(cart=cart, product=product).delete()
+        
+    if  (models.CartItem.objects.get(cart=cart, product=product)).unit  == 0:
+     
+        models.CartItem.objects.filter(cart=cart, product=product).delete()
+    
+
+
+
+                
+    
+
+    return redirect('cart')
+
+def deleteUnit(request, id):
+    user = User.objects.get(username=request.user.username)
+    
+    
+    product = models.Product.objects.get(id=id)
+    cart = models.Cart.objects.get(user=user)
+    
+    if (models.CartItem.objects.filter(cart=cart, product=product)).count() <= 0:
+        
+        models.CartItem.objects.filter(cart=cart, product=product).update(unit=F("unit")+(-1))
+        
+    else :
+        models.CartItem.objects.filter(cart=cart, product=product).delete()
+         
+    
+
+    return redirect('cart')
+
+
 
 def loginPage (request):
     return render (request,"login.html")
@@ -195,11 +264,16 @@ def Order (request, id):
     user = User.objects.get(username=request.user.username)
     cart = models.Cart.objects.get(id=int(id))
     cartitem = models.CartItem.objects.filter(cart=cart)
+    # product = models.Product.objects.get(id=int(item.product.id))
+
     
     order = models.Order.objects.create(
         user=user,
         order_code=order_code(),
+        # product=product,
+
         status="Wait",
+        
     )
     for item in cartitem:
         print(item)
@@ -209,15 +283,12 @@ def Order (request, id):
         models.OrderItem.objects.create(
             order=order,
             product=product,
-            unit=unit
+            unit=unit,
             
         )
         models.CartItem.objects.filter(cart=cart,product=product).delete()
     
     return redirect('cart')
-    
-    
-    
 
 
 

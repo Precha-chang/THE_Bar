@@ -222,7 +222,8 @@
                                     <th>Price</th>
                                     <th>Quantity</th>
                                     <th>Total</th>
-                                    <th>Remove</th>
+                                    <th>Update</th>
+                                    <th>Delete</th>
                                 </tr>
                             </thead>
 
@@ -242,7 +243,13 @@
                                     <td class="price-pr">
                                         <p>${{item.product.price}}</p>
                                     </td>
+                                    
                                     <td class="quantity-box">{{ item.unit  }}</td>
+                                    <td class="name-pr">
+                                        <a href="{% url 'add-unit' item.product.id %}">+</a><br>
+                                        <a href="{% url 'down-unit' item.product.id %}">-</a>
+								
+                                    </td>
                                     <td class="total-pr">
                                         <p>
                                             <script>
@@ -251,10 +258,9 @@
                                             </script>
                                         </p>
                                     </td>
-                                    <td class="remove-pr">
-                                        <a href="#">
-									<i class="fas fa-times"></i>
-								</a>
+                                    <td class="name-pr">
+                                        <a href="{% url 'delete-unit' item.product.id %}">x</a>
+								
                                     </td>
                                 </tr>
                                 {% endfor %}

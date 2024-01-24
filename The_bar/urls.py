@@ -31,12 +31,14 @@ urlpatterns = [
     path("registermember",views.registerMember, name="register-member"),
     path("Ioginuser",views.loginUser, name="log_user"),
     path('logout',views.logoutP, name = "Logout"),
-    
     path('add-cart/<int:id>', views.addCart, name='add-cart'),
     path("reserve",views.reserve, name= "reserve"),
     path("Reserve/<int:id>",views.Reserve, name= "Reserve"),
-    
     path('Order/<int:id>',views.Order, name="Order"),
+    path('add-unit/<int:id>', views.addUnit, name='add-unit'),
+    path('down-unit/<int:id>', views.downUnit, name='down-unit'),
+
+    path('delete-unit/<int:id>', views.deleteUnit, name='delete-unit'),
 
    
     

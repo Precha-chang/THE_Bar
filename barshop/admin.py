@@ -1,6 +1,6 @@
 from django.contrib import admin
 from . import models
-
+from django.db.models import Sum
 # Register your models here.
 
 @admin.register(models.Category)
@@ -15,8 +15,10 @@ class ProductAdmin(admin.ModelAdmin):
         'name',
         'price',
         'desc',
-        'unit',
+    #     # 'unit',
     ]
+    # list_editable = ['unit']
+
     
 @admin.register(models.Cart)
 class CartAdmin(admin.ModelAdmin):
@@ -30,6 +32,7 @@ class CartItemAdmin(admin.ModelAdmin):
         'cart',        
         'product',
         'unit',
+        
     ]
     
 @admin.register(models.Order)
@@ -38,14 +41,51 @@ class orderAdmin(admin.ModelAdmin):
         'user',        
         'order_code',
         'status',
+        'total__price',
+        'order_list',
+        'date'
     ]
+    
+    list_filter =[
+        'date',
+        'user',
+        'status'
+        
+        
+    ]
+    list_editable = ['status']
+    
+    def order_list(self, obj):
+        order_item = models.OrderItem.objects.filter(order=int(obj.id))
+        total = ""
+        for i in order_item:
+            product = models.Product.objects.get(id=int(i.product.id))
+            total += product.name +" : "+ str(i.unit)+","
+        print(total)
+        
+        return total
+    
+    def total__price(self, obj):
+        print(obj.id)
+        order_item = models.OrderItem.objects.filter(order=int(obj.id))
+        total = 0
+        for i in order_item:
+            product = models.Product.objects.get(id=int(i.product.id))
+            total += (product.price * i.unit)
+            
+        
+        return total
+        
+
+    
     
 @admin.register(models.OrderItem)
 class OrderItem(admin.ModelAdmin):
     list_display = [
         'product',
         'unit',
-        'order'
+        'order',        
+        
     ]
 
 @admin.register(models.Table)
@@ -60,6 +100,7 @@ class CReserveAdmin(admin.ModelAdmin):
     list_display = [
         'user',        
         'table_id',
+        
     ]
     
     
